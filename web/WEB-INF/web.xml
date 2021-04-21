@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <!--Servlets-->
+    <servlet>
+        <servlet-name>LoginControllerServlet</servlet-name>
+        <servlet-class>com.gsm.presentation.userManagement.LoginControllerServlet</servlet-class>
+    </servlet>
+    <!--Servlet Mapping -->
+    <servlet-mapping>
+        <servlet-name>LoginControllerServlet</servlet-name>
+        <url-pattern>/Login</url-pattern>
+        <url-pattern>/Login/Validate</url-pattern>
+        <url-pattern>/Dashboard</url-pattern>
+        <url-pattern>/Employee-Dashboard</url-pattern>
+    </servlet-mapping>
+    <!--Welcome Files-->
+    <welcome-file-list>
+        <welcome-file>Login</welcome-file>
+    </welcome-file-list>
+</web-app>
