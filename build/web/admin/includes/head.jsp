@@ -54,3 +54,16 @@
 <link type="text/css"
       href="${pageContext.request.contextPath}/admin/assets/vendor/jqvmap/jqvmap.min.css"
       rel="stylesheet">
+
+<!-- Bootstrap -->
+<link type="text/css" 
+      rel="stylesheet" 
+      href="${pageContext.request.contextPath}/admin/assets/css/bootstrap.min.css">
+<link type="text/css" 
+      rel="stylesheet" 
+      href="${pageContext.request.contextPath}/admin/assets/css/bootstrap-table.css">
+
+<!-- GMS App -->
+<link type="text/css" 
+      rel="stylesheet" 
+      href="${pageContext.request.contextPath}/admin/assets/css/gms-app.css">

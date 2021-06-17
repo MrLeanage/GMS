@@ -1,14 +1,19 @@
 <%-- 
     Document   : script
     Created on : Apr 16, 2021, 9:36:18 PM
-    Author     : chamathka
 --%>
+<!-- Session Actions -->
+        <%@include file="../content/authenticateModel.jsp" %>
  <!-- jQuery -->
+ 
         <script src="${pageContext.request.contextPath}/admin/assets/vendor/jquery.min.js"></script>
+        <script src="${pageContext.request.contextPath}/admin/assets/js/jquery.min.js"></script>
+        <script src="${pageContext.request.contextPath}/admin/assets/js/gms-app.js"></script>
 
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/admin/assets/vendor/popper.min.js"></script>
         <script src="${pageContext.request.contextPath}/admin/assets/vendor/bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath}/admin/assets/js/bootstrap.min.js"></script>
 
         <!-- Perfect Scrollbar -->
         <script src="${pageContext.request.contextPath}/admin/assets/vendor/perfect-scrollbar.min.js"></script>
@@ -57,4 +62,5 @@
         <script src="${pageContext.request.contextPath}/admin/assets/js/check-selected-row.js"></script>
 
         <!-- App Settings (safe to remove) -->
+        
         <script src="${pageContext.request.contextPath}/admin/assets/js/app-settings.js"></script>

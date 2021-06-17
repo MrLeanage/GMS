@@ -23,7 +23,7 @@ public class Authentication {
         UserService userService = new UserService();
         User resultUser = userService.loadSpecificUser(user);
         
-        if(resultUser.getuStatus() == null){
+        if(resultUser == null){
             resultUser.setuStatus("Invalid User ID");
             return resultUser;
         }else if(!resultUser.getuPassword().equals(user.getuPassword())){

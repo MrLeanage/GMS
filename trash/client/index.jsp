@@ -1,60 +1,18 @@
+<%-- 
+    Document   : index
+    Created on : Apr 16, 2021, 9:31:27 PM
+--%>
+
+<%@page import="com.gsm.data.model.User"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en"
       dir="ltr">
 
 
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible"
-              content="IE=edge">
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Dashboard</title>
-
-        <!-- Prevent the demo from appearing in search engines -->
-        <meta name="robots"
-              content="noindex">
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7COswald:300,400,500,700%7CRoboto:400,500%7CExo+2:600&amp;display=swap"
-              rel="stylesheet">
-
-        <!-- Perfect Scrollbar -->
-        <link type="text/css"
-              href="admin/assets/vendor/perfect-scrollbar.css"
-              rel="stylesheet">
-
-        <!-- Material Design Icons -->
-        <link type="text/css"
-              href="admin/assets/css/material-icons.css"
-              rel="stylesheet">
-
-        <!-- Font Awesome Icons -->
-        <link type="text/css"
-              href="admin/assets/css/fontawesome.css"
-              rel="stylesheet">
-
-        <!-- Preloader -->
-        <link type="text/css"
-              href="admin/assets/vendor/spinkit.css"
-              rel="stylesheet">
-        <link type="text/css"
-              href="admin/assets/css/preloader.css"
-              rel="stylesheet">
-
-        <!-- App CSS -->
-        <link type="text/css"
-              href="admin/assets/css/app.css"
-              rel="stylesheet">
-
-        <!-- Dark Mode CSS (optional) -->
-        <link type="text/css"
-              href="admin/assets/css/dark-mode.css"
-              rel="stylesheet">
-
-        <!-- Vector Maps -->
-        <link type="text/css"
-              href="admin/assets/vendor/jqvmap/jqvmap.min.css"
-              rel="stylesheet">
+        <title>Welcome To GMS</title>
+        <%@include file="../admin/includes/head.jsp"%>
 
     </head>
 
@@ -94,58 +52,29 @@
                     <a href="index.html"
                        class="navbar-brand mr-16pt d-lg-none">
                         <img class="navbar-brand-icon mr-0 mr-lg-8pt"
-                             src="assets/images/logo/accent-teal-100%402x.png"
+                             src="${pageContext.request.contextPath}/admin/assets/images/logo/accent-teal-100%402x.png"
                              width="32"
                              alt="Huma">
-                        <span class="d-none d-lg-block">Huma</span>
+                        <span class="d-none d-lg-block">GMS</span>
                     </a>
-
-                    <!-- <button class="btn navbar-btn mr-16pt" data-toggle="modal" data-target="#apps">Apps <i class="material-icons">arrow_drop_down</i></button> -->
-
-                    <form class="search-form navbar-search d-none d-md-flex mr-16pt"
-                          action="https://huma.demo.frontendmatter.com/index.html">
-                        <button class="btn"
-                                type="submit"><i class="material-icons">search</i></button>
-                        <input type="text"
-                               class="form-control"
-                               placeholder="Search ...">
-                    </form>
-
                     <div class="flex"></div>
-
-                    <div class="nav navbar-nav flex-nowrap d-none d-lg-flex mr-16pt"
-                         style="white-space: nowrap;">
-                        <div class="nav-item dropdown d-none d-sm-flex">
-                            <a href="#"
-                               class="nav-link dropdown-toggle"
-                               data-toggle="dropdown">EN</a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <div class="dropdown-header"><strong>Select language</strong></div>
-                                <a class="dropdown-item active"
-                                   href="#">English</a>
-                                <a class="dropdown-item"
-                                   href="#">French</a>
-                                <a class="dropdown-item"
-                                   href="#">Romanian</a>
-                                <a class="dropdown-item"
-                                   href="#">Spanish</a>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="nav navbar-nav flex-nowrap d-flex ml-0 mr-16pt">
                         <div class="nav-item dropdown d-none d-sm-flex">
+                            
                             <a href="#"
                                class="nav-link d-flex align-items-center dropdown-toggle"
                                data-toggle="dropdown">
                                 <img width="32"
                                      height="32"
                                      class="rounded-circle mr-8pt"
-                                     src="assets/images/people/50/guy-3.jpg"
+                                     src="${pageContext.request.contextPath}/admin/assets/images/people/50/woman-2.jpg"
                                      alt="account" />
                                 <span class="flex d-flex flex-column mr-8pt">
-                                    <span class="navbar-text-100">Laza Bogdan</span>
-                                    <small class="navbar-text-50">Administrator</small>
+                                    <%
+		User user = (User)session.getAttribute("authUser"); %>
+                                    <span class="navbar-text-100"><%=user.getuEmpID()%></span>
+                                    <small class="navbar-text-50" ></small>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
@@ -157,7 +86,7 @@
                                 <a class="dropdown-item"
                                    href="billing-history.html">Payments</a>
                                 <a class="dropdown-item"
-                                   href="login.html">Logout</a>
+                                   href="<%=request.getContextPath()%>/Login">Logout</a>
                             </div>
                         </div>
 
@@ -1764,86 +1693,16 @@
                          data-perfect-scrollbar>
 
                         <!-- Navbar toggler -->
-                        <a href="compact-index.html"
-                           class="navbar-toggler navbar-toggler-right navbar-toggler-custom d-flex align-items-center justify-content-center position-absolute right-0 top-0"
-                           data-toggle="tooltip"
-                           data-title="Switch to Compact Vertical Layout"
-                           data-placement="right"
-                           data-boundary="window">
-                            <span class="material-icons">sync_alt</span>
-                        </a>
+                      
 
-                        <a href="index.html"
+                        <a href="<%=request.getContextPath()%>/Dashboard"
                            class="sidebar-brand ">
                             <img class="sidebar-brand-icon"
-                                 src="assets/images/logo/accent-teal-100%402x.png"
-                                 alt="Huma">
-                            <span>Huma</span>
+                                 src="${pageContext.request.contextPath}/assets/images/logo/Logo-Without-Text.png"
+                                 alt="MACRO">
+                            <span>M A C R O</span>
                         </a>
-
-                        <div class="sidebar-account mx-16pt mb-16pt dropdown">
-                            <a href="#"
-                               class="nav-link d-flex align-items-center dropdown-toggle"
-                               data-toggle="dropdown"
-                               data-caret="false">
-                                <img width="32"
-                                     height="32"
-                                     class="rounded-circle mr-8pt"
-                                     src="assets/images/people/50/guy-3.jpg"
-                                     alt="account" />
-                                <span class="flex d-flex flex-column mr-8pt">
-                                    <span class="text-black-100">Laza Bogdan</span>
-                                    <small class="text-black-50">Administrator</small>
-                                </span>
-                                <i class="material-icons text-black-20 icon-16pt">keyboard_arrow_down</i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-full dropdown-menu-caret-center">
-                                <div class="dropdown-header"><strong>Account</strong></div>
-                                <a class="dropdown-item"
-                                   href="edit-account.html">Edit Account</a>
-                                <a class="dropdown-item"
-                                   href="billing.html">Billing</a>
-                                <a class="dropdown-item"
-                                   href="billing-history.html">Payments</a>
-                                <a class="dropdown-item"
-                                   href="login.html">Logout</a>
-                                <div class="dropdown-divider"></div>
-                                <div class="dropdown-header"><strong>Select company</strong></div>
-                                <a href="#"
-                                   class="dropdown-item active d-flex align-items-center">
-
-                                    <div class="avatar avatar-sm mr-8pt">
-
-                                        <span class="avatar-title rounded bg-primary">FM</span>
-
-                                    </div>
-
-                                    <small class="ml-4pt flex">
-                                        <span class="d-flex flex-column">
-                                            <strong class="text-black-100">FrontendMatter Inc.</strong>
-                                            <span class="text-black-50">Administrator</span>
-                                        </span>
-                                    </small>
-                                </a>
-                                <a href="#"
-                                   class="dropdown-item d-flex align-items-center">
-
-                                    <div class="avatar avatar-sm mr-8pt">
-
-                                        <span class="avatar-title rounded bg-accent">HH</span>
-
-                                    </div>
-
-                                    <small class="ml-4pt flex">
-                                        <span class="d-flex flex-column">
-                                            <strong class="text-black-100">HumaHuma Inc.</strong>
-                                            <span class="text-black-50">Publisher</span>
-                                        </span>
-                                    </small>
-                                </a>
-                            </div>
-                        </div>
-
+                        
                         <form action="https://huma.demo.frontendmatter.com/index.html"
                               class="search-form flex-shrink-0 search-form--black sidebar-m-b sidebar-p-l mx-16pt pr-0">
                             <input type="text"
@@ -1996,46 +1855,6 @@
                                             <span class="sidebar-menu-text">Departments</span>
                                         </a>
                                     </li>
-                                    <!-- <li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="documents.html">
-    <span class="sidebar-menu-text">Documents</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="attendance.html">
-    <span class="sidebar-menu-text">Attendance</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="recruitment.html">
-    <span class="sidebar-menu-text">Recruitment</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="payroll.html">
-    <span class="sidebar-menu-text">Payroll</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="training.html">
-    <span class="sidebar-menu-text">Training</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="employee-profile.html">
-    <span class="sidebar-menu-text">Employee Profile</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="accounting.html">
-    <span class="sidebar-menu-text">Accounting</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="inventory.html">
-    <span class="sidebar-menu-text">Inventory</span>
-  </a>
-</li> -->
                                 </ul>
                             </li>
                             <li class="sidebar-menu-item">
@@ -2405,36 +2224,6 @@
                                             <span class="sidebar-menu-text">Pagination</span>
                                         </a>
                                     </li>
-                                    <!-- <li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="ui-typography.html">
-    <span class="sidebar-menu-text">Typography</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="ui-colors.html">
-    <span class="sidebar-menu-text">Colors</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="ui-breadcrumb.html">
-    <span class="sidebar-menu-text">Breadcrumb</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="ui-accordions.html">
-    <span class="sidebar-menu-text">Accordions</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="ui-modals.html">
-    <span class="sidebar-menu-text">Modals</span>
-  </a>
-</li>
-<li class="sidebar-menu-item">
-  <a class="sidebar-menu-button disabled" href="ui-chips.html">
-    <span class="sidebar-menu-text">Chips</span>
-  </a>
-</li> -->
                                     <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button disabled"
                                            href="#">
@@ -2596,75 +2385,7 @@
         </div>
         <!-- // END drawer-layout -->
 
-        <!-- App Settings FAB -->
-        <div id="app-settings">
-            <app-settings layout-active="app"
-                          :layout-location="{
-                          'compact': 'compact-index.html',
-                          'mini': 'mini-index.html',
-                          'app': 'index.html',
-                          'boxed': 'boxed-index.html',
-                          'sticky': 'sticky-index.html',
-                          'default': 'fixed-index.html'
-                          }"
-                          sidebar-type="light"
-                          sidebar-variant="bg-body"></app-settings>
-        </div>
-        <!-- jQuery -->
-        <script src="admin/assets/vendor/jquery.min.js"></script>
-
-        <!-- Bootstrap -->
-        <script src="admin/assets/vendor/popper.min.js"></script>
-        <script src="admin/assets/vendor/bootstrap.min.js"></script>
-
-        <!-- Perfect Scrollbar -->
-        <script src="admin/assets/vendor/perfect-scrollbar.min.js"></script>
-
-        <!-- DOM Factory -->
-        <script src="admin/assets/vendor/dom-factory.js"></script>
-
-        <!-- MDK -->
-        <script src="admin/assets/vendor/material-design-kit.js"></script>
-
-        <!-- App JS -->
-        <script src="admin/assets/js/app.js"></script>
-
-        <!-- Highlight.js -->
-        <script src="admin/assets/js/hljs.js"></script>
-
-        <!-- Global Settings -->
-        <script src="admin/assets/js/settings.js"></script>
-
-        <!-- Flatpickr -->
-        <script src="admin/assets/vendor/flatpickr/flatpickr.min.js"></script>
-        <script src="admin/assets/js/flatpickr.js"></script>
-
-        <!-- Moment.js -->
-        <script src="admin/assets/vendor/moment.min.js"></script>
-        <script src="admin/assets/vendor/moment-range.js"></script>
-
-        <!-- Chart.js -->
-        <script src="admin/assets/vendor/Chart.min.js"></script>
-        <script src="admin/assets/js/chartjs.js"></script>
-
-        <!-- Chart.js Samples -->
-        <script src="admin/assets/js/page.analytics-dashboard.js"></script>
-
-        <!-- Vector Maps -->
-        <script src="admin/assets/vendor/jqvmap/jquery.vmap.min.js"></script>
-        <script src="admin/assets/vendor/jqvmap/maps/jquery.vmap.world.js"></script>
-        <script src="admin/assets/js/vector-maps.js"></script>
-
-        <!-- List.js -->
-        <script src="admin/assets/vendor/list.min.js"></script>
-        <script src="admin/assets/js/list.js"></script>
-
-        <!-- Tables -->
-        <script src="admin/assets/js/toggle-check-all.js"></script>
-        <script src="admin/assets/js/check-selected-row.js"></script>
-
-        <!-- App Settings (safe to remove) -->
-        <script src="admin/assets/js/app-settings.js"></script>
+       <%@include file="../admin/includes/script.jsp" %>
     </body>
 
 

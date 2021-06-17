@@ -19,38 +19,51 @@
 
 <!-- Perfect Scrollbar -->
 <link type="text/css"
-      href="${pageContext.request.contextPath}/admin/assets/vendor/perfect-scrollbar.css"
+      href="${pageContext.request.contextPath}/client/assets/vendor/perfect-scrollbar.css"
       rel="stylesheet">
 
 <!-- Material Design Icons -->
 <link type="text/css"
-      href="${pageContext.request.contextPath}/admin/assets/css/material-icons.css"
+      href="${pageContext.request.contextPath}/client/assets/css/material-icons.css"
       rel="stylesheet">
 
 <!-- Font Awesome Icons -->
 <link type="text/css"
-      href="${pageContext.request.contextPath}/admin/assets/css/fontawesome.css"
+      href="${pageContext.request.contextPath}/client/assets/css/fontawesome.css"
       rel="stylesheet">
 
 <!-- Preloader -->
 <link type="text/css"
-      href="${pageContext.request.contextPath}/admin/assets/vendor/spinkit.css"
+      href="${pageContext.request.contextPath}/client/assets/vendor/spinkit.css"
       rel="stylesheet">
 <link type="text/css"
-      href="${pageContext.request.contextPath}/admin/assets/css/preloader.css"
+      href="${pageContext.request.contextPath}/client/assets/css/preloader.css"
       rel="stylesheet">
 
 <!-- App CSS -->
 <link type="text/css"
-      href="${pageContext.request.contextPath}/admin/assets/css/app.css"
+      href="${pageContext.request.contextPath}/client/assets/css/app.css"
       rel="stylesheet">
 
 <!-- Dark Mode CSS (optional) -->
 <link type="text/css"
-      href="${pageContext.request.contextPath}/admin/assets/css/dark-mode.css"
+      href="${pageContext.request.contextPath}/client/assets/css/dark-mode.css"
       rel="stylesheet">
 
 <!-- Vector Maps -->
 <link type="text/css"
-      href="${pageContext.request.contextPath}/admin/assets/vendor/jqvmap/jqvmap.min.css"
+      href="${pageContext.request.contextPath}/client/assets/vendor/jqvmap/jqvmap.min.css"
       rel="stylesheet">
+
+<!-- Bootstrap -->
+<link type="text/css" 
+      rel="stylesheet" 
+      href="${pageContext.request.contextPath}/client/assets/css/bootstrap.min.css">
+<link type="text/css" 
+      rel="stylesheet" 
+      href="${pageContext.request.contextPath}/client/assets/css/bootstrap-table.css">
+
+<!-- GMS App -->
+<link type="text/css" 
+      rel="stylesheet" 
+      href="${pageContext.request.contextPath}/client/assets/css/gms-app.css">

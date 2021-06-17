@@ -9,7 +9,7 @@ import com.gsm.data.model.User;
 import com.gsm.logic.controller.UserController;
 import com.gsm.logic.utility.Authentication;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.PrintWriter; 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +38,7 @@ public class LoginControllerServlet extends HttpServlet {
                 case "/Login":
                     loadLogin(request, response);
                     break;
-                case "/Login/Validate":
+                case "/Login-Validate":
                     userValidate(request, response);
                     break;
                 case "/Employee-Dashboard":
@@ -52,6 +52,7 @@ public class LoginControllerServlet extends HttpServlet {
                     break;
             }
         } catch (Exception ex) {
+            ex.printStackTrace();
             log("Exception Occured" + ex);
         }
     }
@@ -74,7 +75,7 @@ public class LoginControllerServlet extends HttpServlet {
         user.setuStatus("");
         request.getSession().removeAttribute("authUser");
         request.getSession().setAttribute("authUser",user);
-        request.getRequestDispatcher("/login.jsp").forward(request, response);
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     private void userValidate(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -85,12 +86,12 @@ public class LoginControllerServlet extends HttpServlet {
         user.setuPassword(request.getParameter("uPassword"));
         
         
-        User validatedUser = userController.validateUserInfo(user);
+        User validatedUser = userController.authenticateUserInfo(user);
         log("Exception Occured : "+user.getuEmpID()+"\n");
         log("User Status : "+validatedUser.getuStatus()+"\n");
         if (validatedUser.getuStatus().equals("Active")) {
             request.getSession().setAttribute("authUser", validatedUser);
-            if (validatedUser.getuType().equals("Admin")) {
+            if (!validatedUser.getuType().equals("Employee")) {
                 response.sendRedirect(request.getContextPath() + "/Dashboard");
                 
             } else {
