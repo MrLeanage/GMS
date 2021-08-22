@@ -20,7 +20,7 @@
         </div>  
     </div>
 </div>
-            
+
 <!-- Failed Modal -->
 <div class="modal fade" id="failedPopupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
@@ -40,7 +40,7 @@
         </div>  
     </div>
 </div>
-            
+
 <!-- Failed Modal -->
 <div class="modal fade" id="errorPopupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
@@ -60,7 +60,7 @@
         </div>  
     </div>
 </div>
-            
+
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -77,4 +77,4 @@
         </div>
     </div>
 </div>
-            
+

@@ -197,28 +197,31 @@ public class UserAccountControllerServlet extends HttpServlet {
         User availableUser = userController.loadSpecificUser(user);
         UserValidation validationMsg = userController.verifyUser(user);
 
-        if (availableUser.getuType().equals("Administrator") || availableUser.getuType().equals("Manager - Level 1")) {
-            if (validationMsg.getUserVStatus()) {
-                user.setuPassword("Xyz123");
-                if (userController.updateUserPassword(user)) {
-                    session.setAttribute("actionStatus", "success");
-                    session.setAttribute("actionMsg", "User Password Resseted to 'Xyz123' Successfully!");
-                    resetUserFieldData(request, response);
-                    request.getRequestDispatcher("/admin/userManagement/reset_Admin_Account.jsp").forward(request, response);
+        if (validationMsg.getUserVStatus()) {
+            if (availableUser.getuType().equals("Administrator") || availableUser.getuType().equals("Manager - Level 1")) {
+                if (validationMsg.getUserVStatus()) {
+                    user.setuPassword("Xyz123");
+                    if (userController.updateUserPassword(user)) {
+                        session.setAttribute("actionStatus", "success");
+                        session.setAttribute("actionMsg", "User Password Resseted to 'Xyz123' Successfully!");
+                        resetUserFieldData(request, response);
+                        request.getRequestDispatcher("/admin/userManagement/reset_Admin_Account.jsp").forward(request, response);
+                    } else {
+                        session.setAttribute("actionStatus", "failed");
+                        session.setAttribute("actionMsg", "Failed to Reset User Password!");
+                        request.setAttribute("userData", user);
+                        request.getRequestDispatcher("/admin/userManagement/reset_Admin_Account.jsp").forward(request, response);
+                    }
                 } else {
                     session.setAttribute("actionStatus", "failed");
                     session.setAttribute("actionMsg", "Failed to Reset User Password!");
                     request.setAttribute("userData", user);
+                    request.setAttribute("validationMsg", validationMsg);
                     request.getRequestDispatcher("/admin/userManagement/reset_Admin_Account.jsp").forward(request, response);
-                }
-            } else {
-                session.setAttribute("actionStatus", "failed");
-                session.setAttribute("actionMsg", "Failed to Reset User Password!");
-                request.setAttribute("userData", user);
-                request.setAttribute("validationMsg", validationMsg);
-                request.getRequestDispatcher("/admin/userManagement/reset_Admin_Account.jsp").forward(request, response);
 
+                }
             }
+
         } else {
             session.setAttribute("actionStatus", "failed");
             session.setAttribute("actionMsg", "Failed to Reset User Password!");
@@ -327,29 +330,31 @@ public class UserAccountControllerServlet extends HttpServlet {
         UserController userController = new UserController();
         UserValidation validationMsg = userController.verifyUser(user);
         User availableUser = userController.loadSpecificUser(user);
-
-        if (availableUser.getuType().equals("Manager - Level 2") || availableUser.getuType().equals("Manager - Level 3")) {
-            if (validationMsg.getUserVStatus()) {
-                user.setuPassword("Pqr123");
-                if (userController.updateUserPassword(user)) {
-                    session.setAttribute("actionStatus", "success");
-                    session.setAttribute("actionMsg", "User Password Resseted to 'Pqr123' Successfully!");
-                    resetUserFieldData(request, response);
-                    request.getRequestDispatcher("/admin/userManagement/reset_Manager_Account.jsp").forward(request, response);
+        if (validationMsg.getUserVStatus()) {
+            if (availableUser.getuType().equals("Manager - Level 2") || availableUser.getuType().equals("Manager - Level 3")) {
+                if (validationMsg.getUserVStatus()) {
+                    user.setuPassword("Pqr123");
+                    if (userController.updateUserPassword(user)) {
+                        session.setAttribute("actionStatus", "success");
+                        session.setAttribute("actionMsg", "User Password Resseted to 'Pqr123' Successfully!");
+                        resetUserFieldData(request, response);
+                        request.getRequestDispatcher("/admin/userManagement/reset_Manager_Account.jsp").forward(request, response);
+                    } else {
+                        session.setAttribute("actionStatus", "failed");
+                        session.setAttribute("actionMsg", "Failed to Reset User Password!");
+                        request.setAttribute("userData", user);
+                        request.getRequestDispatcher("/admin/userManagement/reset_Manager_Account.jsp").forward(request, response);
+                    }
                 } else {
                     session.setAttribute("actionStatus", "failed");
                     session.setAttribute("actionMsg", "Failed to Reset User Password!");
                     request.setAttribute("userData", user);
+                    request.setAttribute("validationMsg", validationMsg);
                     request.getRequestDispatcher("/admin/userManagement/reset_Manager_Account.jsp").forward(request, response);
-                }
-            } else {
-                session.setAttribute("actionStatus", "failed");
-                session.setAttribute("actionMsg", "Failed to Reset User Password!");
-                request.setAttribute("userData", user);
-                request.setAttribute("validationMsg", validationMsg);
-                request.getRequestDispatcher("/admin/userManagement/reset_Manager_Account.jsp").forward(request, response);
 
+                }
             }
+
         } else {
             session.setAttribute("actionStatus", "failed");
             session.setAttribute("actionMsg", "Failed to Reset User Password!");
@@ -451,32 +456,35 @@ public class UserAccountControllerServlet extends HttpServlet {
         user.setuEmpID(request.getParameter("eID"));
         user.setuFName(request.getParameter("fName"));
         user.setuLName(request.getParameter("lName"));
-        user.setuType(request.getParameter("accType"));
+        user.setuType("Employee");
         user.setuStatus(request.getParameter("accStatus"));
 
         UserController userController = new UserController();
         UserValidation validationMsg = userController.verifyUser(user);
         User availableUser = userController.loadSpecificUser(user);
 
-        if (availableUser.getuType().equals("Employee")) {
-            if (validationMsg.getUserVStatus()) {
-                user.setuPassword("Abc123");
-                if (userController.updateUserPassword(user)) {
-                    session.setAttribute("actionStatus", "success");
-                    session.setAttribute("actionMsg", "User Password Resseted to 'Abc123' Successfully!");
-                    request.getRequestDispatcher("/admin/userManagement/reset_Employee_Account.jsp").forward(request, response);
+        if (validationMsg.getUserVStatus()) {
+            if (availableUser.getuType().equals("Employee")) {
+                if (validationMsg.getUserVStatus()) {
+                    user.setuPassword("Abc123");
+                    if (userController.updateUserPassword(user)) {
+                        session.setAttribute("actionStatus", "success");
+                        session.setAttribute("actionMsg", "User Password Resseted to 'Abc123' Successfully!");
+                        request.getRequestDispatcher("/admin/userManagement/reset_Employee_Account.jsp").forward(request, response);
+                    } else {
+                        session.setAttribute("actionStatus", "failed");
+                        session.setAttribute("actionMsg", "Failed to Reset User Password!1");
+                        request.getRequestDispatcher("/admin/userManagement/reset_Employee_Account.jsp").forward(request, response);
+                    }
                 } else {
                     session.setAttribute("actionStatus", "failed");
-                    session.setAttribute("actionMsg", "Failed to Reset User Password!");
+                    session.setAttribute("actionMsg", "Failed to Reset User Password!2");
+                    request.setAttribute("validationMsg", validationMsg);
                     request.getRequestDispatcher("/admin/userManagement/reset_Employee_Account.jsp").forward(request, response);
-                }
-            } else {
-                session.setAttribute("actionStatus", "failed");
-                session.setAttribute("actionMsg", "Failed to Reset User Password!");
-                request.setAttribute("validationMsg", validationMsg);
-                request.getRequestDispatcher("/admin/userManagement/reset_Employee_Account.jsp").forward(request, response);
 
+                }
             }
+
         } else {
             session.setAttribute("actionStatus", "failed");
             session.setAttribute("actionMsg", "Failed to Reset User Password!");

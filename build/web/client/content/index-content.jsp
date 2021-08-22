@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="page-separator">
-            <div class="page-separator__text">Grievance Discussions</div>
+            <div class="page-separator__text">on going Grievance Discussions</div>
         </div>
 
         <div class="card mb-0">

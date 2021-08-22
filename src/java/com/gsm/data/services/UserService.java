@@ -33,6 +33,21 @@ public class UserService {
         }
         return userArrayList;
     }
+    public ArrayList<User> loadAllUserByPosition(String type, String status){
+        ArrayList<User> userArrayList = new ArrayList();
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(UserQuery.LOAD_ALL_USER_DATA_BY_TYPE);
+            preparedStatement.setString(1, type);
+            preparedStatement.setString(2, status);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                userArrayList.add(new User(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6)));
+             }
+        }catch(SQLException exception){
+            exception.printStackTrace();
+        }
+        return userArrayList;
+    }
     public User loadSpecificUser(User user){
         User resultUser = null;
         

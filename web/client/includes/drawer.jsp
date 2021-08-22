@@ -12,7 +12,7 @@
             <!-- Navbar toggler -->
 
 
-            <a href="<%=request.getContextPath()%>/Dashboard"
+            <a href="<%=request.getContextPath()%>/Employee-Dashboard"
                class="sidebar-brand ">
                 <img class="sidebar-brand-icon"
                      src="${pageContext.request.contextPath}/assets/images/logo/Logo-Without-Text.png"
@@ -25,7 +25,7 @@
             <ul class="sidebar-menu">
                 <li class="sidebar-menu-item active">
                     <a class="sidebar-menu-button"
-                       href="<%=request.getContextPath()%>/Dashboard">
+                       href="<%=request.getContextPath()%>/Employee-Dashboard">
                         <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">insert_chart_outlined</span>
                         <span class="sidebar-menu-text">Dashboard</span>
                     </a>
@@ -47,22 +47,17 @@
                         id="messaging_menu">
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
-                               href="messages.html">
+                               href="<%=request.getContextPath()%>/CreateNewGrievance">
                                 <span class="sidebar-menu-text">New Grievance</span>
                             </a>
                         </li>
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
-                               href="email.html">
-                                <span class="sidebar-menu-text">Processing Grievances</span>
+                               href="<%=request.getContextPath()%>/MyGrievances">
+                                <span class="sidebar-menu-text">My Grievances</span>
                             </a>
                         </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button"
-                               href="email.html">
-                                <span class="sidebar-menu-text">Finished Grievances</span>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </li>
             </ul>

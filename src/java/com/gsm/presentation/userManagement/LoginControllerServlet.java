@@ -90,7 +90,8 @@ public class LoginControllerServlet extends HttpServlet {
         log("Exception Occured : "+user.getuEmpID()+"\n");
         log("User Status : "+validatedUser.getuStatus()+"\n");
         if (validatedUser.getuStatus().equals("Active")) {
-            request.getSession().setAttribute("authUser", validatedUser);
+            HttpSession httpSession = request.getSession();
+            httpSession.setAttribute("authUser", validatedUser);
             if (!validatedUser.getuType().equals("Employee")) {
                 response.sendRedirect(request.getContextPath() + "/Dashboard");
                 

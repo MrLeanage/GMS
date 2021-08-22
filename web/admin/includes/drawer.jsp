@@ -47,19 +47,19 @@
                         id="messaging_menu">
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
-                               href="messages.html">
+                               href="<%=request.getContextPath()%>/PendingGrievance">
                                 <span class="sidebar-menu-text">New Grievance</span>
                             </a>
                         </li>
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
-                               href="email.html">
+                               href="<%=request.getContextPath()%>/ProcessingGrievance">
                                 <span class="sidebar-menu-text">Processing Grievances</span>
                             </a>
                         </li>
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
-                               href="email.html">
+                               href="<%=request.getContextPath()%>/FinishedGrievance">
                                 <span class="sidebar-menu-text">Finished Grievances</span>
                             </a>
                         </li>

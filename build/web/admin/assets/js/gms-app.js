@@ -52,7 +52,24 @@ $(document).ready(function() {
     table.buttons().container()
         .appendTo( '#example_wrapper .col-md-6:eq(0)' );
 } );
-
+$('#confirm-assign-level3Manager').on('show.bs.modal', function(e) {
+    $(this).find('.btn-primary').attr('href', $(e.relatedTarget).data('href'));
+});
+$('#confirm-assign-level2Manager').on('show.bs.modal', function(e) {
+    $(this).find('.btn-primary').attr('href', $(e.relatedTarget).data('href'));
+});
+$('#confirm-assign-level1Manager').on('show.bs.modal', function(e) {
+    $(this).find('.btn-primary').attr('href', $(e.relatedTarget).data('href'));
+});
+$('#confirm-assign-director').on('show.bs.modal', function(e) {
+    $(this).find('.btn-dark').attr('href', $(e.relatedTarget).data('href'));
+});
+$('#confirm-finish-grievance').on('show.bs.modal', function(e) {
+    $(this).find('.btn-warning').attr('href', $(e.relatedTarget).data('href'));
+});
+$('#confirm-start-grievance').on('show.bs.modal', function(e) {
+    $(this).find('.btn-success').attr('href', $(e.relatedTarget).data('href'));
+});
 
 
 
