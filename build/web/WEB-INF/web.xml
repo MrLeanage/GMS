@@ -13,8 +13,11 @@
         <servlet-name>GrievanceControllerServlet</servlet-name>
         <servlet-class>com.gsm.presentation.grievanceManagement.GrievanceControllerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GuidelineControllerServlet</servlet-name>
+        <servlet-class>com.gsm.presentation.guidelineManagement.GuidelineControllerServlet</servlet-class>
+    </servlet>
     <!--Servlet Mapping -->
-    
     <servlet-mapping>
         <servlet-name>LoginControllerServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -29,20 +32,17 @@
         <url-pattern>/DeleteManagerInfo</url-pattern>
         <url-pattern>/ResetManager</url-pattern>
         <url-pattern>/ResetManagerInfo</url-pattern>
-        
         <url-pattern>/ManageEmployeeInfo</url-pattern>
         <url-pattern>/ManageEmployee</url-pattern>
         <url-pattern>/DeleteEmployeeInfo</url-pattern>
         <url-pattern>/ResetEmployee</url-pattern>
         <url-pattern>/ResetEmployeeInfo</url-pattern>
-        
         <url-pattern>/ManageAdminInfo</url-pattern>
         <url-pattern>/ManageAdmin</url-pattern>
         <url-pattern>/DeleteAdminInfo</url-pattern>
         <url-pattern>/ResetAdmin</url-pattern>
         <url-pattern>/ResetAdminInfo</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>GrievanceControllerServlet</servlet-name>
         <url-pattern>/CreateNewGrievance</url-pattern>
@@ -57,11 +57,19 @@
         <url-pattern>/FinishedGrievance</url-pattern>
         <url-pattern>/GrievanceChatAction</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GuidelineControllerServlet</servlet-name>
+        <url-pattern>/CurrentGuideline</url-pattern>
+        <url-pattern>/AllGuidelines</url-pattern>
+        <url-pattern>/ManageGuidelines</url-pattern>
+        <url-pattern>/AddGuideline</url-pattern>
+        <url-pattern>/DownloadGuideline</url-pattern>
+    </servlet-mapping>
     <!--Welcome Files-->
     <welcome-file-list>
         <welcome-file>Login</welcome-file>
     </welcome-file-list>
-<!--    <session-config>
+    <!--    <session-config>
         <session-timeout>30</session-timeout>
     </session-config>-->
 </web-app>

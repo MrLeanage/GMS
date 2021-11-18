@@ -6,14 +6,11 @@
 package com.gsm.logic.chatServer;
 
 import java.io.StringWriter;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonWriter;
 import javax.websocket.EndpointConfig;
@@ -27,10 +24,6 @@ import com.gsm.data.model.User;
 import com.gsm.data.services.GrievanceService;
 import com.gsm.logic.utility.UtilityMethod;
 
-/**
- *
- * @author dulshan
- */
 @ServerEndpoint(value = "/chatroomServerEndpoint", configurator = ChatroomServerConfigurator.class)
 public class ChatroomServerEndpoint {
 

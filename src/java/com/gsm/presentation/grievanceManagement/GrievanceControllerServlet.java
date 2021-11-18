@@ -5,32 +5,23 @@
  */
 package com.gsm.presentation.grievanceManagement;
 
+import com.gsm.presentation.guidelineManagement.*;
 import com.gsm.data.model.ChatMessage;
 import com.gsm.data.model.Grievance;
 import com.gsm.data.model.User;
 import com.gsm.data.model.UserValidation;
-import com.gsm.data.services.GrievanceService;
 import com.gsm.logic.controller.GrievanceController;
-import com.gsm.logic.controller.UserController;
-import com.gsm.logic.utility.ManagerAllocator;
 import com.gsm.logic.utility.UtilityMethod;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author dulshan
- */
 public class GrievanceControllerServlet extends HttpServlet {
 
     /**
@@ -50,10 +41,11 @@ public class GrievanceControllerServlet extends HttpServlet {
         session = request.getSession(false);
         try {
             String action = request.getServletPath();
-            log("called from" + action);
+            log("called Grievance Servlet from" + action);
             switch (action) {
                 //Admin Cases    
                 case "/MyGrievances":
+                    log("My Grievances");
                     loadEmployeeMyGrievances(request, response);
                     break;
                 case "/CreateNewGrievance":
@@ -63,6 +55,7 @@ public class GrievanceControllerServlet extends HttpServlet {
                     loadPostNewGrievance(request, response);
                     break;
                 case "/PendingGrievance":
+                    log("My Grievances");
                     loadManagerL3PendingGrievances(request, response);
                     break;
                 case "/AcceptGrievance":
@@ -83,19 +76,6 @@ public class GrievanceControllerServlet extends HttpServlet {
                 case "/FinishedGrievance":
                     loadFinishedGrievance(request, response);
                     break;
-//                //Employee Cases    
-//                case "/ResetEmployeeInfo":
-//                    resetEmployee(request, response);
-//                    break;
-//                case "/ManageEmployee":
-//                    loadManageEmployee(request, response);
-//                    break;
-//                case "/ManageEmployeeInfo":
-//                    manageEmployeeInfo(request, response);
-//                    break;
-//                case "/DeleteEmployeeInfo":
-//                    deleteEmployeeInfo(request, response);
-//                    break;
                 default:
                     response.sendRedirect(request.getContextPath() + "/admin/userManagement/add-user-account.jsp");
                     break;
@@ -184,7 +164,7 @@ public class GrievanceControllerServlet extends HttpServlet {
 
     private void loadEmployeeMyGrievances(HttpServletRequest request,
             HttpServletResponse response) throws IOException, ServletException {
-
+        
         User user = (User) session.getAttribute("authUser");
 
         ArrayList<Grievance> grievanceList = GrievanceController.getEmployeeGrievanceList(user.getuEmpID());
@@ -231,23 +211,6 @@ public class GrievanceControllerServlet extends HttpServlet {
             session.setAttribute("actionMsg", "Error Occured! Failed to Accept Grievance");
             getManagerL3PendingGrievances(request, response);
         }
-
-    }
-
-    private void loadEmployeeFinishedGrievances(HttpServletRequest request,
-            HttpServletResponse response) throws IOException, ServletException {
-        resetSession(request, response);
-        loadEmployeeFinishedGrievanceData(request, response);
-    }
-
-    private void loadEmployeeFinishedGrievanceData(HttpServletRequest request,
-            HttpServletResponse response) throws IOException, ServletException {
-        ArrayList<User> userList = new ArrayList();
-        UserController userController = new UserController();
-//        userList = userController.loadAllAdminUsers();
-//
-//        request.setAttribute("userList", userList);
-        request.getRequestDispatcher("/client/grievanceManagement/email.jsp").forward(request, response);
 
     }
 
@@ -383,12 +346,4 @@ public class GrievanceControllerServlet extends HttpServlet {
 
     }
 
-    private void resetUserFieldData(HttpServletRequest request,
-            HttpServletResponse response) {
-        User userData = new User();
-        userData.setuEmpID("");
-        userData.setuFName("");
-        userData.setuLName("");
-        request.setAttribute("userData", userData);
-    }
 }

@@ -7,11 +7,6 @@ package com.gsm.data.model;
 
 import com.gsm.logic.utility.UtilityMethod;
 
-
-/**
- *
- * @author dulshan
- */
 public class ChatMessage {
     private String cID = null;
     private String cGID = null;

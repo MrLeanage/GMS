@@ -2,7 +2,7 @@
     Document   : drawer
     Created on : Jun 3, 2021, 4:02:11 PM
 --%>
-
+<%@page import="com.gsm.data.model.User"%>
 <div class="mdk-drawer js-mdk-drawer"
      id="default-drawer">
     <div class="mdk-drawer__content">
@@ -68,30 +68,6 @@
                 <li class="sidebar-menu-item">
                     <a class="sidebar-menu-button"
                        data-toggle="collapse"
-                       href="#cms_menu">
-                        <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">content_copy</span>
-                        HR Management
-                        <span class="ml-auto sidebar-menu-toggle-icon"></span>
-                    </a>
-                    <ul class="sidebar-submenu collapse sm-indent"
-                        id="cms_menu">
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button"
-                               href="cms-dashboard.html">
-                                <span class="sidebar-menu-text">New Enrolls</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button"
-                               href="posts.html">
-                                <span class="sidebar-menu-text">News Updates</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="sidebar-menu-item">
-                    <a class="sidebar-menu-button"
-                       data-toggle="collapse"
                        href="#account_menu">
                         <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
                         Accounts
@@ -149,26 +125,20 @@
                         id="components_menu">
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
-                               href="ui-buttons.html">
-                                <span class="sidebar-menu-text">Current Guideline Version</span>
+                               href="<%=request.getContextPath()%>/CurrentGuideline">
+                                <span class="sidebar-menu-text">Current Guideline</span>
                             </a>
                         </li>
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
-                               href="ui-avatars.html">
+                               href="<%=request.getContextPath()%>/AllGuidelines">
                                 <span class="sidebar-menu-text">All Guideline Versions</span>
                             </a>
                         </li>
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
-                               href="ui-forms.html">
-                                <span class="sidebar-menu-text">ADD Guideline</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button"
-                               href="ui-loaders.html">
-                                <span class="sidebar-menu-text">Modify Guideline</span>
+                               href="<%=request.getContextPath()%>/ManageGuidelines">
+                                <span class="sidebar-menu-text">Manage Guidelines</span>
                             </a>
                         </li>
                     </ul>
@@ -212,6 +182,38 @@
                                href="crm-dashboard.html">
                                 <span class="sidebar-menu-text">Generate Report</span>
                             </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-menu-item">
+                    
+                    <a class="sidebar-menu-button"
+                       data-toggle="collapse"
+                       href="#cms_menu">
+                        
+                        <img width="20"
+                             height="20"
+                             class="rounded-circle mr-8pt"
+                             src="${pageContext.request.contextPath}/admin/assets/images/people/50/circled-user-icon.png"
+                             alt="account" />
+                        <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">
+                            </span>
+                        <%User userData = (User) session.getAttribute("authUser");%>
+                        <%=userData.getuFName()%> <%=userData.getuLName()%>
+                        <span class="ml-auto sidebar-menu-toggle-icon"></span>
+
+                    </a>
+
+                    <ul class="sidebar-submenu collapse sm-indent"
+                        id="cms_menu">
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button"
+                               href="#">
+                                <span class="sidebar-menu-text">My Account</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" data-href="<%=request.getContextPath()%>/Login" data-toggle="modal" data-target="#confirm-logout"><span class="sidebar-menu-text">Logout</span></a>
                         </li>
                     </ul>
                 </li>

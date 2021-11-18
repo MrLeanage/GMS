@@ -81,7 +81,7 @@
                                         </div>
                                     </div>
                                     <ul class="d-flex flex-column list-unstyled pt-5 mt-5  pb-4 mb-5"
-                                        style="padding-top: 500px"
+                                        
                                         id="chatRoom">
 
                                         <%
@@ -252,7 +252,6 @@
                                             <%if (authUser.getuType().equals("Administrator") || authUser.getuType().equals("Manager - Level 1")) {%>
                                             <li class="list-group-item px-3 py-12pt ">
                                                 <button class="btn btn-dark " data-href="<%=request.getContextPath()%>/AssignChatMember?type=director&grievanceID=<%= specificGrievanceData.getgID()%>&gStatus=<%= specificGrievanceData.getgStatus()%>" data-toggle="modal" data-target="#confirm-assign-director">  + Assign to a Director  </button>
-                                                <button class="btn btn-dark "><a style="color:white;" href="<%=request.getContextPath()%>/AssignChatMember?type=director&grievanceID=<%= specificGrievanceData.getgID()%>" data-toggle="modal" data-target="#confirm-assign-director">  + Assign to a Director  </a></button>
                                             </li>
                                             <% }%>
                                             <%if (authUser.getuType().equals("Manager - Level 1") || authUser.getuType().equals("Manager - Level 2")) {%>
@@ -366,12 +365,8 @@
                 websocket.send(messageText.value);
                 console.log("message sent");
 
-
             }
             ;
-
-
-
 
         </script>
 

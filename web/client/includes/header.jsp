@@ -17,7 +17,7 @@
     </button>
 
     <!-- Navbar Brand -->
-    <a href="index.html"
+    <a href="<%=request.getContextPath()%>/Dashboard"
        class="navbar-brand mr-16pt d-lg-none">
         <img class="navbar-brand-icon mr-0 mr-lg-8pt"
              src="${pageContext.request.contextPath}/client/assets/images/logo/accent-teal-100%402x.png"
@@ -36,7 +36,7 @@
                 <img width="32"
                      height="32"
                      class="rounded-circle mr-8pt"
-                     src="${pageContext.request.contextPath}/client/assets/images/people/50/woman-3.jpg"
+                     src="${pageContext.request.contextPath}/client/assets/images/people/50/circled-user-icon.png"
                      alt="account" />
                 <span class="flex d-flex flex-column mr-8pt">
                     <%User user = (User) session.getAttribute("authUser");%>
