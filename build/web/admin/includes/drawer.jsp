@@ -155,7 +155,7 @@
                         id="community_menu">
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
-                               href="faq.html">
+                               href="<%=request.getContextPath()%>/ViewGivenFeedback">
                                 <span class="sidebar-menu-text">View Feedbacks</span>
                             </a>
                         </li>

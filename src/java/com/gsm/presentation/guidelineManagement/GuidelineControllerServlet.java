@@ -53,22 +53,21 @@ public class GuidelineControllerServlet extends HttpServlet {
             log("called Grievance Servlet from" + action);
             switch (action) {
                 //Admin Cases    
-                
                 case "/CurrentGuideline":
                     log("My Grievances");
-                    loadManagerL3PendingGrievances(request, response);
+                    loadCurrentGuideline(request, response);
                     break;
                 case "/AllGuidelines":
                     loadAllGuidelines(request, response);
                     break;
                 case "/ManageGuidelines":
-                    loadFinishedGrievance(request, response);
+                    loadManageGuidelines(request, response);
                     break;
                 case "/AddGuideline":
                     addNewGuideline(request, response);
                     break;
                 case "/DownloadGuideline":
-                    downloadGuideline(request, response);
+                    downloadGuideline(request, response, "specific");
                     break;
                 default:
                     response.sendRedirect(request.getContextPath() + "/admin/userManagement/add-user-account.jsp");
@@ -124,20 +123,11 @@ public class GuidelineControllerServlet extends HttpServlet {
     //Employee management 
    
 
-    private void loadManagerL3PendingGrievances(HttpServletRequest request,
+    private void loadCurrentGuideline(HttpServletRequest request,
             HttpServletResponse response) throws IOException, ServletException {
         resetSession(request, response);
-        getManagerL3PendingGrievances(request, response);
-
-    }
-
-    private void getManagerL3PendingGrievances(HttpServletRequest request,
-            HttpServletResponse response) throws IOException, ServletException {
-
-        User user = (User) session.getAttribute("authUser");
-        ArrayList<Grievance> grievanceList = GrievanceController.getManagerL3GrievanceList(user.getuEmpID());
-        request.setAttribute("grievanceList", grievanceList);
-        request.getRequestDispatcher("/admin/grievanceManagement/managerL3Grievance.jsp").forward(request, response);
+        downloadGuideline(request, response, "default");
+//      request.getRequestDispatcher("/Dashboard").forward(request, response);
 
     }
 
@@ -146,36 +136,39 @@ public class GuidelineControllerServlet extends HttpServlet {
     private void loadAllGuidelines(HttpServletRequest request,
             HttpServletResponse response) throws IOException, ServletException {
         resetSession(request, response);
-        getGuidelines(request, response);
+        getAllGuidelines(request, response);
+
+    }
+    
+    private void getAllGuidelines(HttpServletRequest request,
+            HttpServletResponse response) throws IOException, ServletException {
+        
+        ArrayList<Guideline> guidelineList = GuidelineController.getAllGuidelines();
+        request.setAttribute("guidelineList", guidelineList);
+        request.getRequestDispatcher("/admin/guidelineManagement/all_Guidelines.jsp").forward(request, response);
 
     }
 
     private void getGuidelines(HttpServletRequest request,
-            HttpServletResponse response) throws IOException, ServletException {
+            HttpServletResponse response ) throws IOException, ServletException {
         
         ArrayList<Guideline> guidelineList = GuidelineController.getAllGuidelines();
         request.setAttribute("guidelineList", guidelineList);
         request.getRequestDispatcher("/admin/guidelineManagement/manage_Guidelines.jsp").forward(request, response);
 
     }
+    
+    
 
     
 
-    private void loadFinishedGrievance(HttpServletRequest request,
+    private void loadManageGuidelines(HttpServletRequest request,
             HttpServletResponse response) throws IOException, ServletException {
         resetSession(request, response);
-        getFinishedGrievance(request, response);
+        getGuidelines(request, response);
 
     }
-    private void getFinishedGrievance(HttpServletRequest request,
-            HttpServletResponse response) throws IOException, ServletException {
-
-        User user = (User) session.getAttribute("authUser");
-        ArrayList<Grievance> grievanceList = GrievanceController.getProcessingManagerGrievanceList(user.getuEmpID(), "Finished");
-        request.setAttribute("grievanceList", grievanceList);
-        request.getRequestDispatcher("/admin/grievanceManagement/managerFinishedGrievance.jsp").forward(request, response);
-
-    }
+    
     private void addNewGuideline(HttpServletRequest request,
             HttpServletResponse response) throws IOException, ServletException {
 
@@ -210,14 +203,27 @@ public class GuidelineControllerServlet extends HttpServlet {
     }
     
     private void downloadGuideline(HttpServletRequest request,
-            HttpServletResponse response) throws IOException, ServletException {
-// size of byte buffer to send file
-        final int BUFFER_SIZE = 4096; 
+            HttpServletResponse response, String type) throws IOException, ServletException {
+        
         
         // get upload id from URL's parameters
-        int gLVersionID = Integer.parseInt(request.getParameter("gLVersionID"));
-        Guideline guideline = GuidelineController.getSpecificGuideline(gLVersionID);
+        
+        
+        // size of byte buffer to send file
+        final int BUFFER_SIZE = 4096; 
+        
+        Guideline guideline = new Guideline();
+        if(type.equals("specific")){
+//            guideline = GuidelineController.getLatestGuideline();
+            int gLVersionID = Integer.parseInt(request.getParameter("gLVersionID"));
+            guideline = GuidelineController.getSpecificGuideline(gLVersionID);
+        }else{
+            guideline = GuidelineController.getLatestGuideline();
+        }
+        log("data out : "+guideline.getgLTitle());
+        
         log("Excuted else of download failure : "+ guideline.getgLVersionID());
+        
         if(guideline.getgLVersionID() != null){
             int fileLength = guideline.getgLFile().available();
         
@@ -251,15 +257,20 @@ public class GuidelineControllerServlet extends HttpServlet {
                 guideline.getgLFile().close();
                 outStream.close();    
         }else {
-            
             session.setAttribute("actionStatus", "failed");
             session.setAttribute("actionMsg", "Failed to Download the Guideline Document");
-            getGuidelines(request, response);
+            if(type.equals("specific")){
+                getGuidelines(request, response);
+            }else{
+                request.getRequestDispatcher("/Dashboard").forward(request, response);
+            }
         }
-
-//        request.setAttribute("userID", user.getuEmpID());
-//        request.getRequestDispatcher("/client/grievanceManagement/createGrievance.jsp").forward(request, response);
-
+        
+    }
+    private void getGuideline(HttpServletRequest request,
+            HttpServletResponse response, int gLVersionID)throws IOException, ServletException {
+        
+        
     }
     
     private void resetSession(HttpServletRequest request,

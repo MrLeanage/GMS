@@ -28,4 +28,9 @@ public class GuidelineController {
         return guidelineService.loadSpecificGuideline(gLVersionID);
     }
     
+    public static Guideline getLatestGuideline() {
+        GuidelineService guidelineService = new GuidelineService();
+        return guidelineService.loadLatestGuideline();
+    }
+    
 }

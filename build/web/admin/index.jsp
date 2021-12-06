@@ -11,7 +11,7 @@
 
 
     <head>
-        <title>Welcome To GMS</title>
+        <title>Welcome To MACRO GMS</title>
         <%@include file="../admin/includes/head.jsp"%>
 
     </head>

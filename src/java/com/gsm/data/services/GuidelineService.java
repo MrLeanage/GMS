@@ -31,6 +31,7 @@ public class GuidelineService {
        ArrayList<Guideline> guidelineList = new ArrayList<Guideline>();
         
         try{
+            
             PreparedStatement preparedStatement = connection.prepareStatement(GuidelineQuery.LOAD_ALL_GUIDELINE_DATA);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
@@ -48,6 +49,21 @@ public class GuidelineService {
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(GuidelineQuery.LOAD_SPECIFIC_GUIDELINE_DATA);
             preparedStatement.setInt(1, gLVersionID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Blob blob = resultSet.getBlob(4);
+                guideline = new Guideline(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), blob.getBinaryStream(), resultSet.getString(5), resultSet.getString(6));
+            }
+        }catch(SQLException exception){
+            exception.printStackTrace();
+        }
+        return guideline;
+    }
+    
+    public Guideline loadLatestGuideline(){
+       Guideline guideline = new Guideline();
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(GuidelineQuery.LOAD_LATEST_GUIDELINE_DATA);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 Blob blob = resultSet.getBlob(4);

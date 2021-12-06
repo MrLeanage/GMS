@@ -240,11 +240,13 @@
 
                     $("#gLFileDiv").hide();
                     $("#add").hide();
-                    $("#update").show();
+                    $("#update").show(); 
+                    
                     
                 }
             }
             function showDiv() {
+               $("#gLVersion").hide();
                $("#gLFileDiv").show();
                $("#gLVersionUDate").hide();
                $("#gLVersionMDate").hide();

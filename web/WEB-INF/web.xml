@@ -17,6 +17,10 @@
         <servlet-name>GuidelineControllerServlet</servlet-name>
         <servlet-class>com.gsm.presentation.guidelineManagement.GuidelineControllerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FeedbackControllerServlet</servlet-name>
+        <servlet-class>com.gsm.presentation.feedbackManagement.FeedbackControllerServlet</servlet-class>
+    </servlet>
     <!--Servlet Mapping -->
     <servlet-mapping>
         <servlet-name>LoginControllerServlet</servlet-name>
@@ -64,6 +68,12 @@
         <url-pattern>/ManageGuidelines</url-pattern>
         <url-pattern>/AddGuideline</url-pattern>
         <url-pattern>/DownloadGuideline</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FeedbackControllerServlet</servlet-name>
+        <url-pattern>/Feedback</url-pattern>
+        <url-pattern>/SubmitFeedback</url-pattern>
+        <url-pattern>/ViewGivenFeedback</url-pattern>
     </servlet-mapping>
     <!--Welcome Files-->
     <welcome-file-list>

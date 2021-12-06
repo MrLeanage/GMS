@@ -5,11 +5,15 @@
  */
 package com.gsm.presentation.userManagement;
 
+import com.gsm.data.model.Guideline;
 import com.gsm.data.model.User;
+import com.gsm.data.model.UserValidation;
+import com.gsm.logic.controller.GuidelineController;
 import com.gsm.logic.controller.UserController;
 import com.gsm.logic.utility.Authentication;
 import java.io.IOException;
 import java.io.PrintWriter; 
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,9 +32,10 @@ public class LoginControllerServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    public HttpSession session;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        session = request.getSession(false);
         try {
             String action = request.getServletPath();
             log("called from" + action);
@@ -107,13 +112,37 @@ public class LoginControllerServlet extends HttpServlet {
     }
 
     private void adminDashboard(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getRequestDispatcher("/admin/index.jsp").forward(request, response);
+        loadAllGuidelines(request, response);
     }
 
     private void employeeDashboard(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("/client/index.jsp").forward(request, response);
     }
 
+    private void loadAllGuidelines(HttpServletRequest request,
+            HttpServletResponse response) throws IOException, ServletException {
+        resetSession(request, response);
+        getAllGuidelines(request, response);
+
+    }
+    
+    private void getAllGuidelines(HttpServletRequest request,
+            HttpServletResponse response) throws IOException, ServletException {
+        
+        ArrayList<Guideline> guidelineList = GuidelineController.getAllGuidelines();
+        request.setAttribute("guidelineList", guidelineList);
+        request.getRequestDispatcher("/admin/index.jsp").forward(request, response);
+
+    }
+    private void resetSession(HttpServletRequest request,
+            HttpServletResponse response) {
+
+        session = request.getSession();
+        session.setAttribute("actionStatus", "default");
+        session.setAttribute("actionMsg", "default");
+        request.setAttribute("validationMsg", new UserValidation());
+
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

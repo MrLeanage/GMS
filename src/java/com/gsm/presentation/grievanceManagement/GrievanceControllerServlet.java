@@ -263,6 +263,7 @@ public class GrievanceControllerServlet extends HttpServlet {
 
         log("User from chat:" + user.getuEmpID());
         if (user.getuType().equals("Employee")) {
+            resetSession(request, response);
             request.getRequestDispatcher("/client/grievanceManagement/message.jsp").forward(request, response);
         } else {
             ArrayList<Grievance> grievanceList = GrievanceController.getProcessingManagerGrievanceList(user.getuEmpID(), gStatus);

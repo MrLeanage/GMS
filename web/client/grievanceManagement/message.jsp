@@ -44,7 +44,8 @@
                             Grievance specificGrievanceData = (Grievance) request.getAttribute("specificGrievanceData");
                         %>
                         <div class="app-messages__container d-flex flex-column h-100 pb-4">
-
+                        <% String actionStatus = request.getSession().getAttribute("actionStatus").toString();%>
+                        <input type="hidden" id="actionStatus" value="<%= actionStatus%>" />
                             <div class="flex pt-4"
                                  style="position: relative;"
                                  data-perfect-scrollbar>
@@ -242,11 +243,16 @@
                                                     </span>
                                                 </a>
                                             </li>
+                                           
                                             <%
                                                     }
                                                 }
                                             %>
-
+                                            <%if (specificGrievanceData.getgStatus().equals("Finished")) {%>
+                                            <li class="list-group-item px-3 py-12pt ">
+                                                <button class="btn btn-success" ><a style="color:white;" href="<%=request.getContextPath()%>/Feedback?gID=<%=specificGrievanceData.getgID()%>&gTitle=<%=specificGrievanceData.getgTitle()%>"><b>GIVE A FEEDBACK</b></a></button>
+                                            </li>
+                                            <% }%>
                                         </ul>
                                     </div>
                                 </div>
@@ -269,9 +275,10 @@
         <!-- App Settings FAB -->
 
         <!-- jQuery -->
+        
         <%@include file="../includes/script.jsp" %>
         <!-- Messages App -->
-
+        
         <script>
             function addMyMessageToRoom(userID, userName, message, date, time) {
                 const para = document.createElement("li");
@@ -337,6 +344,9 @@
 
         </script>
         <script src="${pageContext.request.contextPath}/client/assets/js/messages.js"></script> 
+        <%@include file="../content/popupModel.jsp" %>
+        <%@include file="../includes/script.jsp" %>
+        
     </body>
 
 

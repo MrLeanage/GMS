@@ -4,12 +4,14 @@
 --%>
 
 
+<%@page import="com.gsm.data.model.Guideline"%>
+<%@page import="java.util.ArrayList"%>
 <div class="border-bottom-2 py-32pt position-relative z-1">
     <div class="container-fluid page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
         <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
 
             <div class="mb-24pt mb-sm-0 mr-sm-24pt">
-                <h2 class="mb-0">Dashboard</h2>
+                <h2 class="mb-0">MACRO GRIEVANCE MANAGEMENT SYSTEM</h2>
 
                 <ol class="breadcrumb p-0 m-0">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -24,86 +26,16 @@
 
             </div>
 
-            <div class="dropdown">
-                <a href="#"
-                   class="border rounded d-flex align-items-center p-16pt"
-                   data-toggle="dropdown"
-                   data-caret="false">
 
-                    <div class="avatar avatar-sm mr-8pt">
-
-                        <span class="avatar-title rounded bg-primary">FM</span>
-
-                    </div>
-
-                    <small class="ml-4pt flex">
-                        <span class="d-flex align-items-center">
-                            <span class="flex d-flex flex-column">
-                                <strong class="text-100">FrontendMatter Inc.</strong>
-                                <span class="text-50">Select company</span>
-                            </span>
-                            <i class="material-icons icon-16pt text-50 ml-4pt">arrow_drop_down</i>
-                        </span>
-                    </small>
-                </a>
-                <div class="dropdown-menu w-100">
-                    <div class="dropdown-header"><strong>Select company</strong></div>
-                    <a href="#"
-                       class="dropdown-item active d-flex align-items-center">
-
-                        <div class="avatar avatar-sm mr-8pt">
-
-                            <span class="avatar-title rounded bg-primary">FM</span>
-
-                        </div>
-
-                        <small class="ml-4pt flex">
-                            <span class="d-flex flex-column">
-                                <strong class="text-black-100">FrontendMatter Inc.</strong>
-                                <span class="text-black-50">Administrator</span>
-                            </span>
-                        </small>
-                    </a>
-                    <a href="#"
-                       class="dropdown-item d-flex align-items-center">
-
-                        <div class="avatar avatar-sm mr-8pt">
-
-                            <span class="avatar-title rounded bg-accent">HH</span>
-
-                        </div>
-
-                        <small class="ml-4pt flex">
-                            <span class="d-flex flex-column">
-                                <strong class="text-black-100">HumaHuma Inc.</strong>
-                                <span class="text-black-50">Publisher</span>
-                            </span>
-                        </small>
-                    </a>
-                </div>
-            </div>
 
         </div>
 
         <div class="row"
              role="tablist">
-            <div class="col-auto d-flex flex-column">
-                <h6 class="m-0">&dollar;12.3k</h6>
-                <p class="text-50 mb-0 d-flex align-items-center">
-                    Earnings
-                    <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_up</i>
-                </p>
-            </div>
+
             <div class="col-auto border-left">
-                <h6 class="m-0">264</h6>
-                <p class="text-50 mb-0 d-flex align-items-center">
-                    Sales
-                    <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_up</i>
-                </p>
-            </div>
-            <div class="col-auto border-left">
-                <a href="#"
-                   class="btn btn-accent">New Report</a>
+                <a href="<%=request.getContextPath()%>/PendingGrievance"
+                   class="btn btn-primary">ACCEPT GRIEVANCES</a>
             </div>
         </div>
 
@@ -133,18 +65,50 @@
         </div>
 
         <div class="row card-group-row mb-lg-8pt">
-            <div class="col-xl-3 col-md-6 card-group-row__col">
+            <div class="col-xl-6 col-md-6 card-group-row__col">
                 <div class="card card-group-row__card">
                     <div class="card-body d-flex flex-column align-items-center">
-                        <i class="material-icons icon-32pt text-20 mb-4pt">access_time</i>
+                        <h4>TOTAL PENDING GRIEVANCES</h4>
                         <div class="d-flex align-items-center">
                             <div class="h2 mb-0 mr-3">3.6k</div>
                             <div class="flex">
-                                <p class="mb-0"><strong>Visits</strong></p>
-                                <p class="text-50 mb-0 mt-n1 d-flex align-items-center">
-                                    31.5%
-                                    <i class="material-icons text-accent ml-4pt icon-16pt">keyboard_arrow_up</i>
-                                </p>
+
+                                <div class="col-auto border-left">
+                                    <a href="<%=request.getContextPath()%>/PendingGrievance"
+                                       class="btn btn-primary">CHECK NOW</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-md-6 card-group-row__col">
+                <div class="card card-group-row__card">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <h4>TOTAL ONGOING GRIEVANCES</h4>
+                        <div class="d-flex align-items-center">
+                            <div class="h2 mb-0 mr-3">3.6k</div>
+                            <div class="flex">
+                                <div class="col-auto border-left">
+                                    <a href="<%=request.getContextPath()%>/ProcessingGrievance"
+                                       class="btn btn-success">CHECK NOW</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12 col-md-6 card-group-row__col">
+                <div class="card card-group-row__card">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <h4>You have handled 0 Grievances for this month</h4>
+                        <div class="d-flex align-items-center">
+                            
+                            <div class="flex">
+                                <div class="col-auto border-left">
+                                    <a href="<%=request.getContextPath()%>/ProcessingGrievance"
+                                       class="btn btn-success">CHECK NOW FINISHED GRIEVANCE TICKETS</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -927,136 +891,21 @@
         </div>
 
         <div class="row card-group-row mb-lg-8pt">
+            
             <div class="col-lg card-group-row__col">
                 <div class="card card-group-row__card">
                     <div class="card-header d-flex align-items-center">
-                        <strong class="flex">Checklist</strong>
-                        <div><a href="#"
-                                data-target="#todo"
-                                class="js-toggle-check-all">Mark All as Completed</a></div>
-                    </div>
-                    <div class="progress rounded-0"
-                         style="height: 4px;">
-                        <div class="progress-bar bg-primary"
-                             role="progressbar"
-                             style="width: 40%;"
-                             aria-valuenow="40"
-                             aria-valuemin="0"
-                             aria-valuemax="100"></div>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-unstyled list-todo"
-                            id="todo">
-                            <li>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox"
-                                           class="custom-control-input"
-                                           id="customCheck1">
-                                    <label class="custom-control-label"
-                                           for="customCheck1">Wireframe the CRM application pages</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox"
-                                           class="custom-control-input"
-                                           id="customCheck2">
-                                    <label class="custom-control-label"
-                                           for="customCheck2">Design a new page in Sketch</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox"
-                                           class="custom-control-input"
-                                           checked=""
-                                           id="customCheck3">
-                                    <label class="custom-control-label"
-                                           for="customCheck3">Quote the custom work</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox"
-                                           class="custom-control-input"
-                                           checked=""
-                                           id="customCheck4">
-                                    <label class="custom-control-label"
-                                           for="customCheck4">Interview John for Full-Stack Developer</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox"
-                                           class="custom-control-input"
-                                           checked=""
-                                           id="customCheck5">
-                                    <label class="custom-control-label"
-                                           for="customCheck5">Research the success of CRM</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-footer p-8pt">
-
-                        <ul class="pagination justify-content-start pagination-xsm m-0">
-                            <li class="page-item disabled">
-                                <a class="page-link"
-                                   href="#"
-                                   aria-label="Previous">
-                                    <span aria-hidden="true"
-                                          class="material-icons">chevron_left</span>
-                                    <span>Prev</span>
-                                </a>
-                            </li>
-                            <li class="page-item dropdown">
-                                <a class="page-link dropdown-toggle"
-                                   data-toggle="dropdown"
-                                   href="#"
-                                   aria-label="Page">
-                                    <span>1</span>
-                                </a>
-                                <div class="dropdown-menu">
-                                    <a href="#"
-                                       class="dropdown-item active">1</a>
-                                    <a href="#"
-                                       class="dropdown-item">2</a>
-                                    <a href="#"
-                                       class="dropdown-item">3</a>
-                                    <a href="#"
-                                       class="dropdown-item">4</a>
-                                    <a href="#"
-                                       class="dropdown-item">5</a>
-                                </div>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link"
-                                   href="#"
-                                   aria-label="Next">
-                                    <span>Next</span>
-                                    <span aria-hidden="true"
-                                          class="material-icons">chevron_right</span>
-                                </a>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg card-group-row__col">
-                <div class="card card-group-row__card">
-                    <div class="card-header d-flex align-items-center">
-                        <strong class="flex">Team Skills</strong>
+                        <strong class="flex">FEEDBACK SUMMARY</strong>
                         <a href="#"><i class="material-icons text-50">more_horiz</i></a>
                     </div>
                     <div class="card-body d-flex flex-column align-items-center justify-content-center">
                         <ul class="list-unstyled list-skills w-100">
                             <li class="mb-8pt">
-                                <div class="text-50 border-right"><small>HTML</small></div>
+                                <div class="text-100 border-right"><small>Service Appreciation Feedback</small></div>
                                 <div class="flex">
                                     <div class="progress"
-                                         style="height: 4px;">
-                                        <div class="progress-bar bg-primary"
+                                         style="height: 10px;">
+                                        <div class="progress-bar bg-success"
                                              role="progressbar"
                                              style="width: 61%;"
                                              aria-valuenow="61"
@@ -1067,10 +916,10 @@
                                 <div class="text-70"><small>61%</small></div>
                             </li>
                             <li class="mb-8pt">
-                                <div class="text-50 border-right"><small>CSS</small></div>
+                                <div class="text-50 border-right"><small>Service Request to Re Open Grievance</small></div>
                                 <div class="flex">
                                     <div class="progress"
-                                         style="height: 4px;">
+                                         style="height: 10px;">
                                         <div class="progress-bar bg-accent"
                                              role="progressbar"
                                              style="width: 39%;"
@@ -1082,10 +931,10 @@
                                 <div class="text-70"><small>39%</small></div>
                             </li>
                             <li class="mb-8pt">
-                                <div class="text-50 border-right"><small>JavaScript</small></div>
+                                <div class="text-50 border-right"><small>Service Complain Feedback</small></div>
                                 <div class="flex">
                                     <div class="progress"
-                                         style="height: 4px;">
+                                         style="height: 10px;">
                                         <div class="progress-bar bg-warning"
                                              role="progressbar"
                                              style="width: 76%;"
@@ -1096,51 +945,7 @@
                                 </div>
                                 <div class="text-70"><small>76%</small></div>
                             </li>
-                            <li class="mb-8pt">
-                                <div class="text-50 border-right"><small>Rails</small></div>
-                                <div class="flex">
-                                    <div class="progress"
-                                         style="height: 4px;">
-                                        <div class="progress-bar bg-black-50"
-                                             role="progressbar"
-                                             style="width: 28%;"
-                                             aria-valuenow="28"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div class="text-70"><small>28%</small></div>
-                            </li>
-                            <li class="mb-8pt">
-                                <div class="text-50 border-right"><small>Vue.js</small></div>
-                                <div class="flex">
-                                    <div class="progress"
-                                         style="height: 4px;">
-                                        <div class="progress-bar bg-black-20"
-                                             role="progressbar"
-                                             style="width: 50%;"
-                                             aria-valuenow="50"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div class="text-70"><small>50%</small></div>
-                            </li>
-                            <li class="mb-0">
-                                <div class="text-50 border-right"><small>Laravel</small></div>
-                                <div class="flex">
-                                    <div class="progress"
-                                         style="height: 4px;">
-                                        <div class="progress-bar bg-black-20"
-                                             role="progressbar"
-                                             style="width: 60%;"
-                                             aria-valuenow="60"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div class="text-70"><small>60%</small></div>
-                            </li>
+                           
                         </ul>
                     </div>
                     <div class="card-footer p-8pt">
@@ -1195,153 +1000,97 @@
             <div class="page-separator__text">Discussions</div>
         </div>
 
-        <div class="card mb-0">
-            <div class="card-header">
-                <div class="row align-items-center"
-                     style="white-space: nowrap;">
-                    <div class="col-lg-auto">
-                        <form class="search-form search-form--dark d-lg-inline-flex mb-8pt mb-lg-0"
-                              action="https://huma.demo.frontendmatter.com/discussions.html">
-                            <input type="text"
-                                   class="form-control w-lg-auto"
-                                   placeholder="Search discussions">
-                            <button class="btn"
-                                    type="submit"
-                                    role="button"><i class="material-icons">search</i></button>
-                        </form>
-                    </div>
-                    <div class="col-lg d-flex flex-wrap align-items-center">
-                        <div class="ml-lg-auto dropdown">
-                            <a href="#"
-                               class="btn btn-link dropdown-toggle text-70"
-                               data-toggle="dropdown">My Posts</a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a href="#"
-                                   class="dropdown-item active">My Posts</a>
-                                <a href="#"
-                                   class="dropdown-item">All Posts</a>
-                            </div>
-                        </div>
-                        <a href="discussions-ask.html"
-                           class="btn btn-outline-secondary">Ask a question</a>
-                    </div>
-                </div>
-            </div>
+        <div class="container-fluid page__container">
+            <div class="page-section">
 
-            <div class="list-group list-group-flush">
 
-                <div class="list-group-item p-3">
-                    <div class="row align-items-start">
-                        <div class="col-md-3 mb-8pt mb-md-0">
-                            <div class="media align-items-center">
-                                <div class="media-left mr-8pt">
-                                    <a href="#"
-                                       class="avatar avatar-32pt"><img src="assets/images/people/110/guy-1.jpg"
-                                                                    alt="avatar"
-                                                                    class="avatar-img rounded-circle"></a>
-                                </div>
-                                <div class="d-flex flex-column media-body media-middle">
-                                    <a href="#"
-                                       class="text-body"><strong>Laza Bogdan</strong></a>
-                                    <small class="text-muted">2 days ago</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-8pt mb-md-0">
-                            <p class="mb-8pt"><a href="discussion.html"
-                                                 class="text-body"><strong>Using Angular HttpClientModule instead of HttpModule</strong></a></p>
 
-                            <a href="discussion.html"
-                               class="chip chip-outline-secondary">Angular fundamentals</a>
 
-                        </div>
-                        <div class="col-auto d-flex flex-column align-items-center justify-content-center">
-                            <h5 class="m-0">1</h5>
-                            <p class="lh-1 mb-0"><small class="text-70">answers</small></p>
-                        </div>
-                    </div>
+                <div class="container p-1">
+                    <p>Add Your Grievance Guideline description here</p>
                 </div>
 
-                <div class="list-group-item p-3">
-                    <div class="row align-items-start">
-                        <div class="col-md-3 mb-8pt mb-md-0">
-                            <div class="media align-items-center">
-                                <div class="media-left mr-8pt">
-                                    <a href="#"
-                                       class="avatar avatar-32pt"><img src="assets/images/people/110/guy-2.jpg"
-                                                                    alt="avatar"
-                                                                    class="avatar-img rounded-circle"></a>
-                                </div>
-                                <div class="d-flex flex-column media-body media-middle">
-                                    <a href="#"
-                                       class="text-body"><strong>Adam Curtis</strong></a>
-                                    <small class="text-muted">3 days ago</small>
-                                </div>
+                <div class="row mb-32pt">
+
+                    <div class="col-lg-12 d-flex align-items-center">
+                        <div class="flex"
+                             style="max-width: 100%">
+                            <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                            <br>
+
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table table-bordered table-striped mb-0 data-table sortable" id="usersTable">
+                                    <thead class="thead-dark">
+                                    <th>VERSION</th>
+                                    <th>TITLE</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>UPLOADED DATE</th>
+                                    <th>LAST MODIFY DATE</th>
+                                    <th>ACTION</th>
+
+
+                                    </thead>
+
+                                    <tbody  id="myTable">
+                                        <%
+                                            ArrayList<Guideline> guidelineList = (ArrayList<Guideline>) request.getAttribute("guidelineList");
+                                            for (Guideline guideline : guidelineList) {
+                                        %>
+                                        <tr>
+                                            <td><%=guideline.getgLVersionID()%></td>
+                                            <td><%=guideline.getgLTitle()%></td>
+                                            <td><%=guideline.getgLDescription()%></td>
+                                            <td><%=guideline.getgLUploadDate()%></td>
+                                            <td><%=guideline.getgLModifyDate()%></td>
+                                            <td><button class="btn btn-success" ><a style="color:white;" href="<%=request.getContextPath()%>/DownloadGuideline?gLVersionID=<%=guideline.getIntegergLVersionID()%>"><b>DOWNLOAD</b></a></button></td>
+
+                                        </tr>
+                                        <% }%>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="col mb-8pt mb-md-0">
-                            <p class="mb-0"><a href="discussion.html"
-                                               class="text-body"><strong>Why am I getting an error when trying to install angular/http@2.4.2</strong></a></p>
-
-                        </div>
-                        <div class="col-auto d-flex flex-column align-items-center justify-content-center">
-                            <h5 class="m-0">1</h5>
-                            <p class="lh-1 mb-0"><small class="text-70">answers</small></p>
-                        </div>
                     </div>
-                </div>
-
-            </div>
-
-            <div class="card-footer p-8pt">
-
-                <ul class="pagination justify-content-start pagination-xsm m-0">
-                    <li class="page-item disabled">
-                        <a class="page-link"
-                           href="#"
-                           aria-label="Previous">
-                            <span aria-hidden="true"
-                                  class="material-icons">chevron_left</span>
-                            <span>Prev</span>
-                        </a>
-                    </li>
-                    <li class="page-item dropdown">
-                        <a class="page-link dropdown-toggle"
-                           data-toggle="dropdown"
-                           href="#"
-                           aria-label="Page">
-                            <span>1</span>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a href="#"
-                               class="dropdown-item active">1</a>
-                            <a href="#"
-                               class="dropdown-item">2</a>
-                            <a href="#"
-                               class="dropdown-item">3</a>
-                            <a href="#"
-                               class="dropdown-item">4</a>
-                            <a href="#"
-                               class="dropdown-item">5</a>
-                        </div>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link"
-                           href="#"
-                           aria-label="Next">
-                            <span>Next</span>
-                            <span aria-hidden="true"
-                                  class="material-icons">chevron_right</span>
-                        </a>
-                    </li>
-                </ul>
+                </div>                                                  
 
             </div>
         </div>
+        <script>
+            var table = document.getElementById("usersTable"), rIndex;
 
+            for (var i = 0; i < table.rows.length; i++) {
+                table.rows[i].onclick = function ()
+                {
+                    $("#gLVersion").show();
+                    $("#gLVersionUDate").show();
+                    $("#gLVersionMDate").show();
+                    rIndex = this.rowIndex;
+                    document.getElementById("gLVersionID").value = this.cells[0].innerHTML;
+                    document.getElementById("gLTitle").value = this.cells[1].innerHTML;
+                    document.getElementById("gLDescription").value = this.cells[2].innerHTML
+                    document.getElementById("gLUDate").value = this.cells[3].innerHTML
+                    document.getElementById("gLMDate").value = this.cells[4].innerHTML
+
+                    $("#gLFileDiv").hide();
+                    $("#add").hide();
+                    $("#update").show();
+
+
+                }
+            }
+            function showDiv() {
+                $("#gLVersion").hide();
+                $("#gLFileDiv").show();
+                $("#gLVersionUDate").hide();
+                $("#gLVersionMDate").hide();
+            }
+
+        </script>
+        <%@include file="../content/popupModel.jsp" %>
+        <%@include file="../includes/script.jsp" %>
     </div>
 </div>
 
 <!-- footer -->
-    <%@include  file="../includes/footer.jsp" %>
+<%@include  file="../includes/footer.jsp" %>
 <!-- // END footer -->
