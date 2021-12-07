@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -11,16 +11,13 @@ import com.gsm.data.model.Grievance;
 import com.gsm.data.model.Guideline;
 import com.gsm.data.model.User;
 import com.gsm.data.model.UserValidation;
-import com.gsm.logic.controller.GrievanceController;
 import com.gsm.logic.controller.GuidelineController;
-import com.gsm.logic.utility.UtilityMethod;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLConnection;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;

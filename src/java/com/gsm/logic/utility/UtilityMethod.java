@@ -14,6 +14,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Locale;
 
@@ -101,7 +102,7 @@ public class UtilityMethod {
         DateTimeFormatter DATEFORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate dt = LocalDate.parse(stringDate, DATEFORMATTER);
 
-        return dt.getYear() + "-" + dt.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+        return dt.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH) + " - " + dt.getYear();
     }
 
     public static ObservableList<Integer> removeIntegerDuplicates(ObservableList<Integer> list) {
@@ -124,10 +125,10 @@ public class UtilityMethod {
         return result;
     }
 
-    public static ObservableList<String> removeStringDuplicates(ObservableList<String> list) {
+    public static ArrayList<String> removeStringDuplicates(ArrayList<String> list) {
 
         // Store unique items in result.
-        ObservableList<String> result = FXCollections.observableArrayList();
+        ArrayList<String> result = new ArrayList<>();
 
         // Record encountered Strings in HashSet.
         HashSet<String> set = new HashSet<>();
@@ -206,5 +207,10 @@ public class UtilityMethod {
            return "No Data";
        }else
            return value;
+    }
+    public static Double formatNumberToTwoDecimalPlaces(Double value) {
+        DecimalFormat df = new DecimalFormat("####0.00");
+        
+        return Double.parseDouble(df.format(value));
     }
 }

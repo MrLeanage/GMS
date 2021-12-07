@@ -36,7 +36,7 @@
                             <%
                                 User user = (User) session.getAttribute("authUser");%>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
+                                <label for="exampleInputEmail1">Employee ID</label>
                                 <input class="form-control" name="uEmpID" aria-describedby="emailHelp" placeholder="Enter Employee ID" value="<%=user.getuEmpID()%>" required>
                             </div>
                             <div class="form-group">

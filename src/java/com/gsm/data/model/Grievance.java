@@ -7,6 +7,7 @@ package com.gsm.data.model;
 
 import com.gsm.logic.utility.UtilityMethod;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Grievance {
     private String gID = null;
@@ -20,8 +21,10 @@ public class Grievance {
     private String gStatus = null;
     private boolean gChat = false;
     private String gL3Manager = null;
+    private ArrayList<Feedback> feedbackList;
 
     public Grievance() {
+        feedbackList = new ArrayList<>();
     }
     
     public Grievance(String gID, String gUID, String gTitle, String gDescription, String gStartDate, String gStartTime, String gEndDate, String gEndTime, String gStatus, String gChat, String gL3Manager) {
@@ -127,6 +130,16 @@ public class Grievance {
     public void setgL3Manager(String gL3Manager) {
         this.gL3Manager = gL3Manager;
     }
+
+    public ArrayList<Feedback> getFeedbackList() {
+        return feedbackList;
+    }
+
+    public void setFeedbackList(ArrayList<Feedback> feedbackList) {
+        this.feedbackList = feedbackList;
+    }
+    
+    
     
     
     private String setDate(String date){

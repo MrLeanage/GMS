@@ -3,15 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Workspaces/Netbeans/GMS/web/WEB-INF/web.xml</file>
-            <file>file:/D:/Workspaces/Netbeans/GMS/web/admin/guidelineManagement/manage_Guidelines.jsp</file>
-            <file>file:/D:/Workspaces/Netbeans/GMS/web/admin/guidelineManagement/all_Guidelines.jsp</file>
-            <file>file:/D:/Workspaces/Netbeans/GMS/src/java/com/gsm/presentation/feedbackManagement/FeedbackControllerServlet.java</file>
-            <file>file:/D:/Workspaces/Netbeans/GMS/web/client/grievanceManagement/message.jsp</file>
-            <file>file:/D:/Workspaces/Netbeans/GMS/src/java/com/gsm/data/services/FeedbackService.java</file>
-            <file>file:/D:/Workspaces/Netbeans/GMS/web/client/feedbackManagement/createFeedback.jsp</file>
-            <file>file:/D:/Workspaces/Netbeans/GMS/web/client/includes/header.jsp</file>
-            <file>file:/D:/Workspaces/Netbeans/GMS/src/java/com/gsm/data/services/GuidelineService.java</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/web/admin/includes/drawer.jsp</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/web/client/index.jsp</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/web/admin/statisticManagement/statistics.jsp</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/web/client/content/index-content.jsp</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/web/admin/includes/header.jsp</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/src/java/com/gsm/data/query/GrievanceQuery.java</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/web/login.jsp</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/src/java/com/gsm/presentation/statisticManagement/StatisticControllerServlet.java</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/src/java/com/gsm/data/model/Performance.java</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/src/java/com/gsm/logic/controller/StatisticController.java</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/web/admin/index.jsp</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/web/admin/content/index-content.jsp</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/src/java/com/gsm/presentation/userManagement/LoginControllerServlet.java</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/src/java/com/gsm/data/model/Feedback.java</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/src/java/com/gsm/data/model/Grievance.java</file>
+            <file>file:/D:/Workspaces/Netbeans/GMS/src/java/com/gsm/data/services/GrievanceService.java</file>
         </group>
     </open-files>
 </project-private>

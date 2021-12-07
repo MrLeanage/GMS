@@ -5,6 +5,7 @@
 <%@page import="com.gsm.data.model.User"%>
 <div class="mdk-drawer js-mdk-drawer"
      id="default-drawer">
+    <%User userData = (User) session.getAttribute("authUser");%>
     <div class="mdk-drawer__content">
         <div class="sidebar sidebar-dark sidebar-left"
              data-perfect-scrollbar>
@@ -45,12 +46,14 @@
                     </a>
                     <ul class="sidebar-submenu collapse sm-indent"
                         id="messaging_menu">
+                        <%if(userData.getuType().equals("Manager - Level 3")){ %>
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
                                href="<%=request.getContextPath()%>/PendingGrievance">
                                 <span class="sidebar-menu-text">New Grievance</span>
                             </a>
                         </li>
+                        <%}%>
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
                                href="<%=request.getContextPath()%>/ProcessingGrievance">
@@ -75,18 +78,22 @@
                     </a>
                     <ul class="sidebar-submenu collapse sm-indent"
                         id="account_menu">
+                        <%if(userData.getuType().equals("Manager - Level 3") || userData.getuType().equals("Manager - Level 2")){ %>
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
                                href="<%=request.getContextPath()%>/ManageEmployee">
                                 <span class="sidebar-menu-text">Employee Accounts</span>
                             </a>
                         </li>
+                        
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
                                href="<%=request.getContextPath()%>/ResetEmployee">
                                 <span class="sidebar-menu-text">Reset Employee Password</span>
                             </a>
                         </li>
+                        <%}%>
+                        <%if(userData.getuType().equals("Manager - Level 1") || userData.getuType().equals("Administrator")){ %>
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
                                href="<%=request.getContextPath()%>/ManageManager">
@@ -99,6 +106,8 @@
                                 <span class="sidebar-menu-text">Reset Manager Password</span>
                             </a>
                         </li>
+                        <%}%>
+                         <%if( userData.getuType().equals("Administrator")){ %>
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
                                href="<%=request.getContextPath()%>/ManageAdmin">
@@ -111,6 +120,7 @@
                                 <span class="sidebar-menu-text">Reset Admin Password</span>
                             </a>
                         </li>
+                        <%}%>
                     </ul>
                 </li>
                 <li class="sidebar-menu-item">
@@ -135,12 +145,14 @@
                                 <span class="sidebar-menu-text">All Guideline Versions</span>
                             </a>
                         </li>
+                        <%if( userData.getuType().equals("Administrator") || userData.getuType().equals("Manager - Level 1")){ %>
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
                                href="<%=request.getContextPath()%>/ManageGuidelines">
                                 <span class="sidebar-menu-text">Manage Guidelines</span>
                             </a>
                         </li>
+                        <%}%>
                     </ul>
                 </li>
                 <li class="sidebar-menu-item">
@@ -161,6 +173,7 @@
                         </li>
                     </ul>
                 </li>
+                <%if( userData.getuType().equals("Administrator")){ %>
                 <li class="sidebar-menu-item">
                     <a class="sidebar-menu-button js-sidebar-collapse"
                        data-toggle="collapse"
@@ -173,18 +186,14 @@
                         id="enterprise_menu">
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button"
-                               href="erp-dashboard.html">
+                               href="<%=request.getContextPath()%>/Statistics">
                                 <span class="sidebar-menu-text">View Statistics</span>
                             </a>
                         </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button"
-                               href="crm-dashboard.html">
-                                <span class="sidebar-menu-text">Generate Report</span>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </li>
+                <%}%>
                 <li class="sidebar-menu-item">
                     
                     <a class="sidebar-menu-button"
@@ -198,7 +207,7 @@
                              alt="account" />
                         <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">
                             </span>
-                        <%User userData = (User) session.getAttribute("authUser");%>
+                        
                         <%=userData.getuFName()%> <%=userData.getuLName()%>
                         <span class="ml-auto sidebar-menu-toggle-icon"></span>
 

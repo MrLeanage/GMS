@@ -4,6 +4,8 @@
 --%>
 
 <%@page import="com.gsm.data.model.User"%>
+<%@page import="com.gsm.data.model.Guideline"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en"
@@ -40,6 +42,7 @@
                 <%@include file="../admin/includes/header.jsp"%>
                 <!-- // END Header -->
                 <%@include file="../admin/content/index-content.jsp" %>
+
 
 
             </div>

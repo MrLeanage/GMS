@@ -54,6 +54,9 @@ public class GrievanceController {
             if(grievance.getgStatus().equals(type)){
                 sortedData.add(grievance);
             }
+            if(type.equals("All")){
+                 sortedData.add(grievance);
+            }
         }
 
         return sortedData;

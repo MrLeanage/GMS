@@ -68,7 +68,7 @@
                                             <th>LAST NAME</th>
                                             <th>ACCOUNT TYPE</th>
                                             <th>ACCOUNT STATUS</th>
-                                            <th>ACTION</th>
+                                            
 
                                             </thead>
 
@@ -83,7 +83,7 @@
                                                     <td><%=userInfo.getuLName()%></td>
                                                     <td><%=userInfo.getuType()%></td>
                                                     <td><%=userInfo.getuStatus()%></td>
-                                                    <td><button class="btn btn-danger" data-href="<%=request.getContextPath()%>/DeleteEmployeeInfo?eID=<%=userInfo.getuEmpID()%>" data-toggle="modal" data-target="#confirm-delete">DELETE</button></td>
+                                                    
 
                                                 </tr>
                                                 <% }%>

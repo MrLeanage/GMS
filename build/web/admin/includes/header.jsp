@@ -47,7 +47,7 @@
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header"><strong>Account</strong></div>
                 <a class="dropdown-item"
-                   href="edit-account.html">My Account</a>
+                   href="#">My Account</a>
                 <a class="dropdown-item pointer-cursor"
                    data-href="<%=request.getContextPath()%>/Login" data-toggle="modal" data-target="#confirm-logout">Logout</a>
             </div>

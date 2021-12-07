@@ -9,6 +9,7 @@ import com.gsm.data.model.Guideline;
 import com.gsm.data.model.User;
 import com.gsm.data.model.UserValidation;
 import com.gsm.logic.controller.GuidelineController;
+import com.gsm.logic.controller.StatisticController;
 import com.gsm.logic.controller.UserController;
 import com.gsm.logic.utility.Authentication;
 import java.io.IOException;
@@ -130,7 +131,15 @@ public class LoginControllerServlet extends HttpServlet {
             HttpServletResponse response) throws IOException, ServletException {
         
         ArrayList<Guideline> guidelineList = GuidelineController.getAllGuidelines();
+        ArrayList<User> userList = new ArrayList();
+        UserController userController = new UserController();
+        userList = userController.loadAllEmployeeUsers();
+         request.setAttribute("feedbackPerformanceList", StatisticController.getFeedbackPerformancePercentages());
+        request.setAttribute("userList", userList);
         request.setAttribute("guidelineList", guidelineList);
+        request.setAttribute("pendingCount", StatisticController.getTotalGrievanceCountByStatus("Pending"));
+        request.setAttribute("processingCount", StatisticController.getTotalGrievanceCountByStatus("Processing"));
+        request.setAttribute("FinishedCount", StatisticController.getTotalGrievanceCountByStatus("Finished"));
         request.getRequestDispatcher("/admin/index.jsp").forward(request, response);
 
     }
